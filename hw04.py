@@ -65,12 +65,14 @@ def planet(mass):
     """Construct a planet of some mass."""
     assert mass > 0
     "*** YOUR CODE HERE ***"
+    return ['planet',mass]
 
 
 def mass(w):
     """Select the mass of a planet."""
     assert is_planet(w), 'must call mass on a planet'
     "*** YOUR CODE HERE ***"
+    return w[1]
 
 
 def is_planet(w):
@@ -127,6 +129,11 @@ def balanced(m):
     True
     """
     "*** YOUR CODE HERE ***"
+    if is_planet(m):
+        return mass(m)
+    else:
+        assert is_mobile(m), "must get total weight of a mobile or a planet"
+        return balanced(mobile(arm(m))) + total_weight(mobile(arm(m)))
 
 
 def totals_tree(m):
